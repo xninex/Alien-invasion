@@ -25,7 +25,7 @@ class AlienInvasion():
         while True:
             self._check_events()
             self.ship.update()
-            self.bullets.update()
+            self._update_bullet()
             self._update_screen()
 
 
@@ -68,9 +68,20 @@ class AlienInvasion():
         elif event.key == pg.K_DOWN:
             self.ship.moving_down = False
 
+
     def _fire_bullet(self):
-        new_bullet = Bullet(self)
-        self.bullets.add(new_bullet)
+        """Создание нового снаряда и вложение его в группу bullets"""
+        if len(self.bullets) < self.settings.bullet_allowed:
+            new_bullet = Bullet(self)
+            self.bullets.add(new_bullet)
+
+    def _update_bullet(self):
+        self.bullets.update()
+        # Удаление старых снарядов
+        for bullet in self.bullets.copy():
+            if bullet.rect.bottom <= 0:
+                self.bullets.remove(bullet)
+
 
     def _update_screen(self):
         # При каждом проходе цикла перерисовывается экран
