@@ -3,7 +3,7 @@ import pygame
 
 class Ship():
     def __init__(self, ai_game):
-
+        """Инициализирует корабль и задает его начальную позицию"""
         self.screen = ai_game.screen
         self.screen_rect = ai_game.screen.get_rect()
         self.settings = ai_game.settings
@@ -14,6 +14,7 @@ class Ship():
 
         self.x = float(self.rect.x)
         self.y = float(self.rect.y)
+
         #Флаг перемещения
         self.moving_right = False
         self.moving_left = False
@@ -32,7 +33,7 @@ class Ship():
         if self.moving_down and self.rect.y < 940:
             self.y += self.settings.ship_speed
 
-
+        #Обновление атрибута rect на основании self.x/y
         self.rect.x = self.x
         self.rect.y = self.y
 
