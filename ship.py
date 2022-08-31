@@ -8,9 +8,9 @@ class Ship():
         self.screen_rect = ai_game.screen.get_rect()
         self.settings = ai_game.settings
 
-        self.image = pygame.image.load('images/my_ship.bmp')
+        self.image = pygame.image.load('images\my_ship1.bmp')
         self.rect = self.image.get_rect()
-        self.rect.midbottom = self.screen_rect.midbottom
+        self.rect.midleft = self.screen_rect.midleft
 
         self.x = float(self.rect.x)
         self.y = float(self.rect.y)

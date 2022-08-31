@@ -71,6 +71,7 @@ class AlienInvasion():
 
     def _fire_bullet(self):
         """Создание нового снаряда и вложение его в группу bullets"""
+        #Количество снарядов
         if len(self.bullets) < self.settings.bullet_allowed:
             new_bullet = Bullet(self)
             self.bullets.add(new_bullet)
@@ -79,7 +80,7 @@ class AlienInvasion():
         self.bullets.update()
         # Удаление старых снарядов
         for bullet in self.bullets.copy():
-            if bullet.rect.bottom <= 0:
+            if bullet.rect.bottom == 0:
                 self.bullets.remove(bullet)
 
 
