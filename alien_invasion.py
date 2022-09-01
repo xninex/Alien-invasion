@@ -3,6 +3,7 @@ import pygame as pg
 from settings import Settings
 from ship import Ship
 from bullet import Bullet
+from alien import Alien
 
 class AlienInvasion():
 
@@ -19,6 +20,8 @@ class AlienInvasion():
         pg.display.set_caption("Alien Invasion")
         self.ship = Ship(self)
         self.bullets = pg.sprite.Group()
+        self.aliens = pg.sprite.Group()
+        self._create_fleet()
 
     def run_game(self):
         """Запуск основного цикла"""
@@ -89,8 +92,36 @@ class AlienInvasion():
         self.ship.blitme()
         for bullet in self.bullets.sprites():
             bullet.draw_bullet()
+        self.aliens.draw(self.screen)
         # Отображение последнего перерисованного экрана
         pg.display.flip()
+
+
+    def _create_fleet(self):
+        """Создает флот пришельцев"""
+        alien = Alien(self)
+        alien_width, alien_hight = alien.rect.size
+        available_space_x = self.settings.screen_width - (2 * alien_width)
+        number_aliens_x = available_space_x // (2 * alien_width)
+
+        """Определяет количество рядов, помещающихся н аэкране"""
+        ship_heigt = self.ship.rect.height
+        available_space_y = (self.settings.screen_height -
+                             (3 * alien_hight) - ship_heigt)
+        number_rows = available_space_y // (2* alien_hight)
+        for row_number in range(number_rows):
+            for alien_number in range(number_aliens_x):
+                self._create_alien(alien_number, row_number)
+
+
+    def _create_alien(self, alien_number, row_number):
+        """Создание пришельца и размещение его в ряду"""
+        alien = Alien(self)
+        alien_width, alien_height = alien.rect.size
+        alien.x = alien_width + 2 * alien_width * alien_number
+        alien.rect.x = alien.x
+        alien.rect.y = alien.rect.height + 2 * alien.rect.height * row_number
+        self.aliens.add(alien)
 
 
 
