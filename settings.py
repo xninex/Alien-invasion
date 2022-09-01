@@ -7,9 +7,9 @@ class Settings():
         self.screen_height = 1000
 
         #Цвет фона
-        self.bg_color = (48, 48, 48)
+        # self.bg_color = (48, 48, 48)
 
-        # self.bg = pygame.image.load('images/fon.bmp')
+        self.fon = pygame.image.load('images/fon.bmp')
 
         #Скорость движения корабля
         self.ship_speed = 1.5
