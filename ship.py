@@ -30,7 +30,7 @@ class Ship():
             self.x -= self.settings.ship_speed
         if self.moving_up and self.rect.y > 0:
             self.y -= self.settings.ship_speed
-        if self.moving_down and self.rect.y < 940:
+        if self.moving_down and self.rect.y < 850:
             self.y += self.settings.ship_speed
 
         #Обновление атрибута rect на основании self.x/y
