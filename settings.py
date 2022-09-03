@@ -9,16 +9,16 @@ class Settings():
         #Цвет фона
         # self.bg_color = (48, 48, 48)
 
-        self.fon = pygame.image.load('images/fon.bmp')
+        self.fon = pygame.image.load("images/fon.bmp")
 
         #Скорость движения корабля
-        self.ship_speed = 1.5
+        self.ship_speed = 2
 
         self.ship_limit = 3
 
         #Параметры снаряда
         self.bullet_speed = 3
-        self.bullet_width = 1000
+        self.bullet_width = 10
         self.bullet_height = 15
         self.bullet_color = (255, 48, 48)
         self.bullet_allowed = 3
@@ -26,7 +26,7 @@ class Settings():
         # Настройка пришельцев
         self.alien_speed = 1.5
         self.fleet_drop_speed = 10
-        self.fleet_direction = 2
+        self.fleet_direction = 3
 
 
 
